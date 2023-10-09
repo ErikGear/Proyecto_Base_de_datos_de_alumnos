@@ -19,15 +19,21 @@ html {
 de 1rem = 10px*/
 body {
   font-size: 16px;
+
+  background-image: url("../assets/images/PHYSICS.jpg");
+
 }
 
 /*Agregando tipografia*/
 h1 {
     font-size: 3.8rem;
+    color: #fff;
 }
 
 h2 {
     font-size: 2.8rem;
+    color: #fff;
+    font-weight: bold;
 }
 
 h3 {
@@ -36,4 +42,46 @@ h3 {
 
 h1, h2, h3 {
     text-align: center;
+}
+
+label{
+    color: #fff;
+    font-weight: bold;
+}
+
+input {
+    font-size: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*Alineando inputs*/
+.forms-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.main {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+table, th, td{
+    border-collapse: collapse;
+    /*border-spacing: 5px;*/
+    padding: 10px 10px;
+    text-align: center;
+}
+
+tr:hover{
+    cursor: pointer;
+}
+
+tr:nth-child(even){
+    background-color: #f1faee;
+}
+
+tr:nth-child(odd){
+    background-color: #a8dadc;
 }
