@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,7 +10,52 @@
     <link rel="stylesheet" href="./css/styles.css">
     <script defer src="./JS/main.js"></script>
 </head>
+
 <body>
-    
+    <header class="header">
+        <div class="logo-bg">
+            <img src="./assets/images/school_logo.png" alt="logo tipo" title="Instituto Educativo William Shakespeare">
+        </div>
+        <h1 class="titulo-principal">Instituto Educativo William Shakespeare</h1>
+    </header>
+
+    <main class="main">
+
+        <section>
+            <h2>Dar de alta un Alumno:</h2>
+
+            <label for="nombre">Nombre: </label>
+            <input id="nombre" type="text">
+            <label for="apellido">Apellidos</label>
+            <input id="apellido" type="text">
+            <label for="edad">Edad: </label>
+            <input id="edad" type="number">
+
+        </section>
+        <section>
+            <h2>Lista de Alumnos:</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellidos</th>
+                        <th>Edad</th>
+                        <th>Materias Inscritas</th>
+                        <th>Calificaciones</th>
+                    </tr>
+                </thead>
+                <tbody id="datos-alumnos">
+
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+
+    </footer>
+
 </body>
+
 </html>
