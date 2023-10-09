@@ -1,7 +1,11 @@
 const alumnosBD = [];
 
+const alertaExitosa = document.getElementById("alerta-exitosa");
+const alertaAdvertencia = document.getElementById("alerta-advertencia");
+alertaExitosa.style.display = "none";
+alertaAdvertencia.style.display = "none";
 class Persona {
-  static palabra = /^[a-zA-Z]{2,16}$+/;
+  static palabra = /^[a-zA-Z]{2,16}$/;
 
   #nombre;
   #apellidos;
@@ -135,6 +139,7 @@ class Alumno extends Persona {
 
   #idAlumno;
   #materias;
+  #calificaciones;
 
   constructor(nombre, apellido, edad) {
     super(nombre, apellido, edad);
@@ -169,29 +174,37 @@ function altaAlumno() {
   let edad = document.getElementById("edad").value;
 
   alumnosBD.push(new Alumno(nombre, apellido, edad));
+
+  listarALumnos();
 }
 
 function listarALumnos() {
   limpiarDatos();
   const tbody = document.getElementById("datos-alumnos");
   tbody.innerHTML = "";
-  let celdilla = ``;
-  for (const alumno of alumnosBD) {
-    celdilla = `
+
+  alumnosBD.forEach((alumno, indice) => {
+    let filaAlumno = ``;
+
+    filaAlumno = `
     <tr>
+      <td>${alumno.getId}</td>
       <td>${alumno.getNombre}</td>
       <td>${alumno.getApellidos}</td>
       <td>${alumno.getEdad}</td>
-      <td>${alumno.get}</td>
-      <td>${almuno}</td>
-      <td><button class="" type="button" onclick="eliminarAlumno()">Eliminar</button></td>
+      <td> - </td>
+      <td> - </td>
+      <td><button class="btn btn-danger" type="button" onclick="eliminarAlumno(${indice})">Eliminar</button></td>
     </tr>
     `;
 
-    tbody += celdilla;
-  }
+    tbody.innerHTML += filaAlumno;
+  });
 }
 
 function eliminarAlumno(indice) {
-  alumnosBD.splice(indice, 1)
+  alumnosBD.splice(indice, 1);
+  listarALumnos();
 }
+
+listarALumnos();
