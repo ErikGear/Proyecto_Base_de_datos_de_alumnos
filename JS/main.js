@@ -175,15 +175,15 @@ function altaAlumno() {
 
   alumnosBD.push(new Alumno(nombre, apellido, edad));
 
-  listarALumnos();
+  listarALumnos(alumnosBD);
 }
 
-function listarALumnos() {
+function listarALumnos(alumnos) {
   limpiarDatos();
   const tbody = document.getElementById("datos-alumnos");
   tbody.innerHTML = "";
 
-  alumnosBD.forEach((alumno, indice) => {
+  alumnos.forEach((alumno, indice) => {
     let filaAlumno = ``;
 
     filaAlumno = `
@@ -202,9 +202,34 @@ function listarALumnos() {
   });
 }
 
-function eliminarAlumno(indice) {
-  alumnosBD.splice(indice, 1);
-  listarALumnos();
+function ordernarAlfabeticamente() {
+  let alumnosOrdenados = alumnosBD.sort((a, b) => {
+      if (a.nombre > b.nombre) {
+          return 1
+      }
+      if (a.nombre < b.nombre) {
+          return -1
+      }
+      return 0
+  })
+  listarALumnos(alumnosOrdenados)
 }
 
-listarALumnos();
+function eliminarAlumno(indice) {
+  alumnosBD.splice(indice, 1);
+  listarALumnos(alumnosBD);
+}
+
+function buscarAlumno() {
+  let buscarAlumno = document.getElementById("busquedaAlumno").value
+  const nombreCapitalizado = buscarAlumno.charAt(0).toUpperCase() + buscarAlumno.slice(1)
+  let AlumnoFiltrado = alumnosBD.filter( alumno => alumno.nombre.includes(nombreCapitalizado))
+  if (AlumnoFiltrado.length == 0) {
+      
+  } else {
+     listarALumnos(AlumnoFiltrado)
+  } 
+  
+}
+
+listarALumnos(alumnosBD);
